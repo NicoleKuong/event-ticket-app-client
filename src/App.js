@@ -2,8 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import SignUpContainer from "./components/SignUp/SignUpContainer";
-
-import "./App.css";
+import LoginContainer from "./components/Login/LoginContainer";
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/signup" component={SignUpContainer} />
-          {/* <Route exact path="/login" component={LoginContainer} /> */}
+          <Route exact path="/login" component={LoginContainer} />
         </Switch>
       </Router>
     </div>

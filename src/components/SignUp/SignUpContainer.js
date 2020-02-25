@@ -17,7 +17,9 @@ class SignupFormContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     // console.log(this.state);
-    this.props.dispatch(signUp(this.state));
+    this.props.dispatch(
+      signUp(this.state.username, this.state.email, this.state.password)
+    );
     this.setState({
       username: "",
       email: "",
@@ -41,7 +43,7 @@ class SignupFormContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log("STATE IN MSTP", state);
+  console.log("STATE IN MSTP", state);
   return {
     userCreated: state.user.userCreated
   };

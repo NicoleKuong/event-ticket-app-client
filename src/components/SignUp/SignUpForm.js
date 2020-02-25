@@ -4,16 +4,16 @@ import Button from "react-bootstrap/Button";
 import "./SignUpForm.css";
 
 const SignUpForm = props => {
-  // console.log(props);
+  console.log("signup props", props);
   return (
     <Form className="form" onSubmit={props.handleSubmit}>
       <Form.Group controlId="formUserName">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           onChange={props.handleChange}
-          type="text"
-          name="userName"
-          value={props.values.firstName}
+          type="username"
+          name="username"
+          value={props.values.username}
         />
       </Form.Group>
 
