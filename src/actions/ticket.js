@@ -36,20 +36,26 @@ function newTicket(payload) {
   };
 }
 
-export const createTicket = (imageUrl, price, description, eventId) => (
-  dispatch,
-  getState
-) => {
+export const createTicket = (
+  imageUrl,
+  price,
+  description,
+  eventId,
+  history
+) => (dispatch, getState) => {
   console.log("getstate in ticket", getState());
   const token = getState().user.token;
-  //userId
+  const userId = getState().user.userId;
+
   request
-    .post(`${databaseUrl}/events`)
+    .post(`${databaseUrl}/tickets`)
     .set("Authorization", `Bearer ${token}`)
-    .send({})
+    .send({ imageUrl, price, description, eventId, userId })
     .then(response => {
+      console.log("createticket", response);
       const action = newTicket(response.body);
       dispatch(action);
+      history.push(`/events/${eventId}`);
     })
     .catch(console.error);
 };

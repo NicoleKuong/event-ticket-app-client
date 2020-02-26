@@ -21,7 +21,9 @@ class TicketContainer extends Component {
       createTicket(
         this.state.imageUrl,
         this.state.price,
-        this.state.description
+        this.state.description,
+        this.props.match.params.eventId,
+        this.props.history
       )
     );
     this.setState({

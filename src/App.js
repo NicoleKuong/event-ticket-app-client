@@ -20,7 +20,11 @@ function App() {
             path="/events/:eventId"
             component={TicketsListContainer}
           />
-          {/* <Route exact path="/events/newticket" component={TicketContainer} /> */}
+          <Route
+            exact
+            path="/events/:eventId/newticket"
+            component={TicketContainer}
+          />
         </Switch>
       </Router>
     </div>

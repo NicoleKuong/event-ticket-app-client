@@ -20,7 +20,11 @@ class TicketListContainer extends React.Component {
       <div>
         <h1>Event: {ticketEvent.name}</h1>
         <img src={ticketEvent.imageUrl} alt-={ticketEvent.name} />
-        <TicketsList events={this.props.events} tickets={this.props.tickets} />
+        <TicketsList
+          events={this.props.events}
+          tickets={this.props.tickets}
+          eventId={this.props.match.params.eventId}
+        />
       </div>
     );
   }

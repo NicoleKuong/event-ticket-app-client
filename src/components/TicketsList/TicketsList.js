@@ -7,6 +7,7 @@ export default class TicketList extends Component {
   render() {
     const { tickets } = this.props;
     const { events } = this.props;
+    const { eventId } = this.props;
     console.log("ticket list props", this.props);
     // console.log("userLoggedIn booloan", this.props.userLoggedIn === true);
 
@@ -29,6 +30,9 @@ export default class TicketList extends Component {
                 </div>
               </Link>
             ))}
+            <Link to={`/events/${eventId}/newticket`}>
+              <Button variant="primary">ADD TICKET</Button>
+            </Link>
           </div>
         )}
       </div>
