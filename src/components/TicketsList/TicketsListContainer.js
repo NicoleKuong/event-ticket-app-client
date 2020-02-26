@@ -13,11 +13,15 @@ class TicketListContainer extends React.Component {
     // console.log("events props", this.props.events);
     // console.log("params id ", this.props.match.params.eventId);
     const ticketEvent = this.props.events.find(
-      event => event.id == parseInt(this.props.match.params.eventId)
+      event => event.id === parseInt(this.props.match.params.eventId)
     );
     console.log("ticket event", ticketEvent);
     return (
-      <TicketsList events={this.props.events} tickets={this.props.tickets} />
+      <div>
+        <h1>Event: {ticketEvent.name}</h1>
+        <img src={ticketEvent.imageUrl} alt-={ticketEvent.name} />
+        <TicketsList events={this.props.events} tickets={this.props.tickets} />
+      </div>
     );
   }
 }
