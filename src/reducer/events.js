@@ -1,3 +1,4 @@
+import { ALL_EVENTS, NEW_EVENT } from "../actions/events";
 const initialState = [];
 
 export default (state = initialState, action = {}) => {

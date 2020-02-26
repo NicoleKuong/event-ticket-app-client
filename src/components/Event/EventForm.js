@@ -37,7 +37,7 @@ const EventForm = props => {
           placeholder="Enter event image url"
         />
       </Form.Group>
-      <Form.Group controlId="formDate">
+      <Form.Group controlId="formStartDate">
         <Form.Label>Event Start Date:</Form.Label>
         <Form.Control
           onChange={props.handleChange}
@@ -46,7 +46,7 @@ const EventForm = props => {
           value={props.values.startDate}
         />
       </Form.Group>
-      <Form.Group controlId="formDate">
+      <Form.Group controlId="formEndDate">
         <Form.Label>Event End Date:</Form.Label>
         <Form.Control
           onChange={props.handleChange}
