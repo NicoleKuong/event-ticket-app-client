@@ -20,7 +20,4 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispatchToProps = {
-//   getEvents
-// };
 export default connect(mapStateToProps)(EventListContainer);

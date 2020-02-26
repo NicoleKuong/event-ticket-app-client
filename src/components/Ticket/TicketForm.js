@@ -4,9 +4,9 @@ import Button from "react-bootstrap/Button";
 // import "./SignUpForm.css";
 
 const TicketForm = props => {
-  console.log("ticket props", props);
+  // console.log("ticket props", props);
   return (
-    <Form className="form" onSubmit={props.handleSubmit}>
+    <Form className="ticketform" onSubmit={props.handleSubmit}>
       <Form.Group controlId="formUserName">
         <Form.Label>Ticket Image:</Form.Label>
         <Form.Control
