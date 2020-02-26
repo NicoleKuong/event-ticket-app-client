@@ -9,7 +9,7 @@ function signUpSuccess() {
 }
 
 //create user
-export function signUp(username, email, password) {
+export function signUp(username, email, password, history) {
   return async function(dispatch, getState) {
     const response = await axios.post(`${databaseUrl}/user`, {
       username: username,
@@ -19,19 +19,20 @@ export function signUp(username, email, password) {
 
     if (response.status === 201) {
       dispatch(signUpSuccess());
+      history.push("/login");
     }
   };
 }
 
-function loginSuccess(token) {
+function loginSuccess(token, userId) {
   // console.log("is this an id? 2", userId);
   return {
     type: LOGIN_SUCCESS,
-    payload: { token: token }
+    payload: { token: token, userId: userId }
   };
 }
 
-export function login(email, password) {
+export function login(email, password, history) {
   return async function(dispatch, getState) {
     // console.log(email, password);
     const response = await axios.post(`${databaseUrl}/login`, {
@@ -40,6 +41,7 @@ export function login(email, password) {
     });
     // console.log("this should contain an id", response);
     dispatch(loginSuccess(response.data.jwt, response.data.userId));
+    history.push("/events");
   };
 }
 

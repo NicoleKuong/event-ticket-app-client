@@ -44,7 +44,7 @@ class EventContainer extends Component {
       <div>
         <h2>Create a New Event</h2>
         <EventForm
-          text={"Signup"}
+          text={"eventForm"}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
           values={this.state}

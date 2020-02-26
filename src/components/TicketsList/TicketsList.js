@@ -3,27 +3,29 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-export default class List extends Component {
+export default class TicketList extends Component {
   render() {
+    const { tickets } = this.props;
     const { events } = this.props;
-    // console.log("props", this.props);
+    console.log("ticket list props", this.props);
     // console.log("userLoggedIn booloan", this.props.userLoggedIn === true);
 
     return (
       <div>
-        <h1>Event List</h1>
+        <h3>Ticket List</h3>
         {/* {!this.props.userLoggedIn && <LoginFormContainer />}
         {!this.props.userLoggedIn && <SignUpFormContainer />}
         {this.props.userLoggedIn && <CreateFormContainer />} */}
 
-        {!events && "Loading..."}
-        {events && (
+        {!tickets && "Loading..."}
+        {tickets && (
           <div>
-            {events.map((event, index) => (
-              <Link to={`events/${event.id}`}>
-                <div className="eventList" key={index}>
-                  <h3>{event.name}</h3>
-                  <img src={event.imageUrl} alt={event.name} />
+            {tickets.map((ticket, index) => (
+              <Link to={`ticket/${ticket.id}`}>
+                <div className="ticketList" key={index}>
+                  <img src={ticket.imageUrl} alt="ticket" />
+                  <p>Price: {ticket.price}</p>
+                  <p>Ticket Description: {ticket.description}</p>
                 </div>
               </Link>
             ))}

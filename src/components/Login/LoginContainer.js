@@ -15,7 +15,10 @@ class LoginContainer extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.dispatch(login(this.state.email, this.state.password));
+    this.props.dispatch(
+      login(this.state.email, this.state.password, this.props.history)
+    );
+
     this.setState({
       email: "",
       password: ""
