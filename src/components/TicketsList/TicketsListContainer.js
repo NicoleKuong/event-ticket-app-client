@@ -7,9 +7,9 @@ import "./TicketList.css";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
-    const eventId = this.props.match.params.eventId;
-    console.log("event params id", eventId);
-    this.props.dispatch(getTickets(eventId));
+    const pageEventId = this.props.match.params.eventId;
+    console.log("event params id", pageEventId);
+    this.props.dispatch(getTickets(pageEventId));
   }
   render() {
     // console.log("events props", this.props.events);
@@ -48,7 +48,7 @@ class TicketListContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE IN TicketList", state);
+  // console.log("STATE IN TicketList", state);
   return {
     user: state.user,
     events: state.events,

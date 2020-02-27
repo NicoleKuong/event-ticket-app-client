@@ -14,18 +14,13 @@ function allComments(payload) {
 }
 
 export const getComments = ticketId => (dispatch, getState) => {
-  const state = getState();
-  const { comments } = state;
-  console.log("state action in comment", getState());
-  if (!comments.length) {
-    request(`${databaseUrl}/tickets/${ticketId}/comments`)
-      .then(response => {
-        // console.log("response test", response);
-        const action = allComments(response.body);
-        dispatch(action);
-      })
-      .catch(console.error);
-  }
+  request(`${databaseUrl}/tickets/${ticketId}/comments`)
+    .then(response => {
+      // console.log("response test", response);
+      const action = allComments(response.body);
+      dispatch(action);
+    })
+    .catch(console.error);
 };
 
 //create comment

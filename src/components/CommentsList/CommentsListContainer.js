@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CommentsList from "./CommentsList";
 import { getComments } from "../../actions/comments";
+import "./CommentsList.css";
 
 class CommentsListContainer extends Component {
   componentDidMount() {
@@ -13,14 +14,14 @@ class CommentsListContainer extends Component {
   render() {
     return (
       <div>
-        <CommentsList comments={this.props.comments} />
+        <CommentsList comments={this.props.comments} user={this.props.user} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log("STATE IN CommentList", state);
+  // console.log("STATE IN CommentList", state);
   return {
     user: state.user,
     events: state.events,

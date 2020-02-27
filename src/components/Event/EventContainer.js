@@ -56,7 +56,7 @@ class EventContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE IN MSTP", state);
+  // console.log("STATE IN MSTP", state);
   return {
     user: state.user
   };

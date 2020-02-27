@@ -44,7 +44,7 @@ class CreateCommentContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE IN comment", state);
+  // console.log("STATE IN comment", state);
   return {
     userId: state.user.userId,
     events: state.events,

@@ -1,4 +1,4 @@
-import { ALL_TICKETS, NEW_TICKET } from "../actions/ticket";
+import { ALL_TICKETS, NEW_TICKET, ONE_USER_TICKETS } from "../actions/ticket";
 
 const initialState = [];
 
@@ -10,8 +10,9 @@ export default (state = initialState, action = {}) => {
     case NEW_TICKET: {
       return [action.payload, ...state];
     }
-    // case EDIT_TICKET: {
-    // }
+    //this might need to move
+    case ONE_USER_TICKETS:
+      return action.payload;
     default:
       return state;
   }
