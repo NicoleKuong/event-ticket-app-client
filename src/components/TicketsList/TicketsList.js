@@ -8,12 +8,11 @@ export default class TicketList extends Component {
     const { tickets } = this.props;
     const { events } = this.props;
     const { eventId } = this.props;
-    console.log("ticket list props", this.props);
-    // console.log("userLoggedIn booloan", this.props.userLoggedIn === true);
+    // console.log("ticket list props", this.props);
 
     return (
       <div>
-        <h3>Ticket List</h3>
+        <h3 className="ticket-list-title">Tickets For This Event:</h3>
         {/* {!this.props.userLoggedIn && <LoginFormContainer />}
         {!this.props.userLoggedIn && <SignUpFormContainer />}
         {this.props.userLoggedIn && <CreateFormContainer />} */}
@@ -22,16 +21,25 @@ export default class TicketList extends Component {
         {tickets && (
           <div>
             {tickets.map((ticket, index) => (
-              <Link to={`ticket/${ticket.id}`}>
-                <div className="ticketList" key={index}>
-                  <img src={ticket.imageUrl} alt="ticket" />
-                  <p>Price: {ticket.price}</p>
-                  <p>Ticket Description: {ticket.description}</p>
-                </div>
-              </Link>
+              <Card className="event-card" style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={ticket.imageUrl} />
+                <Card.Body>
+                  <Card.Title></Card.Title>
+                  <Card.Text>
+                    Ticket Description: {ticket.description}
+                  </Card.Text>
+                  <Card.Text>Price: {ticket.price} </Card.Text>
+                  <Link to={`/ticket/${ticket.id}`}>
+                    <Button variant="primary">View Ticket Details</Button>
+                  </Link>
+                </Card.Body>
+              </Card>
             ))}
+            <br />
             <Link to={`/events/${eventId}/newticket`}>
-              <Button variant="primary">ADD TICKET</Button>
+              <Button className="add-new-ticket-btn" variant="primary">
+                ADD TICKET
+              </Button>
             </Link>
           </div>
         )}

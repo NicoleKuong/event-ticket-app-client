@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CreateCommentForm from "./CreateCommentForm";
 import { connect } from "react-redux";
+import { createComment } from "../../actions/comments";
 
 class CreateCommentContainer extends Component {
   state = {
@@ -17,8 +18,8 @@ class CreateCommentContainer extends Component {
     this.props.dispatch(
       createComment(
         this.state.content,
-        this.props.match.params.ticketId,
-        this.props.user.userId
+        this.props.ticketId,
+        this.props.userId
         // this.props.history
       )
     );

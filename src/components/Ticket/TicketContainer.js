@@ -51,7 +51,7 @@ class TicketContainer extends Component {
 const mapStateToProps = state => {
   console.log("STATE IN ticket", state);
   return {
-    userId: state.user.userId,
+    user: state.user,
     events: state.events,
     tickets: state.tickets
   };

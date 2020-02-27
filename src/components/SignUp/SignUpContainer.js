@@ -35,7 +35,7 @@ class SignupFormContainer extends Component {
   render() {
     return (
       <div>
-        {this.props.userCreated ? <h1>Account created</h1> : null}
+        {this.props.user.userCreated ? <h1>Account created</h1> : null}
         <SignUpForm
           text={"Signup"}
           handleSubmit={this.handleSubmit}
@@ -50,7 +50,7 @@ class SignupFormContainer extends Component {
 const mapStateToProps = state => {
   console.log("STATE IN MSTP", state);
   return {
-    userCreated: state.user.userCreated
+    user: state.user
   };
 };
 

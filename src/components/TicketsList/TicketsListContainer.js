@@ -2,11 +2,13 @@ import React from "react";
 import { getTickets } from "../../actions/ticket";
 import { connect } from "react-redux";
 import TicketsList from "./TicketsList";
+import Card from "react-bootstrap/Card";
+import "./TicketList.css";
 
 class TicketListContainer extends React.Component {
   componentDidMount() {
     const eventId = this.props.match.params.eventId;
-    // console.log("params id", eventId);
+    console.log("event params id", eventId);
     this.props.dispatch(getTickets(eventId));
   }
   render() {
@@ -18,8 +20,23 @@ class TicketListContainer extends React.Component {
     console.log("ticket event", ticketEvent);
     return (
       <div>
-        <h1>Event: {ticketEvent.name}</h1>
-        <img src={ticketEvent.imageUrl} alt-={ticketEvent.name} />
+        <div className="event-detail">
+          <h2 className="event-detail-name">Event Details:</h2>
+          <h3>{ticketEvent.name}</h3>
+          <img
+            className="event-detail-img"
+            src={ticketEvent.imageUrl}
+            alt={ticketEvent.name}
+          />
+          <p className="event-detail-description">
+            Description: {ticketEvent.description}
+          </p>
+          <p className="event-detail-date">
+            Event End Date: {ticketEvent.endDate.slice(0, 10)}
+          </p>
+        </div>
+
+        <br />
         <TicketsList
           events={this.props.events}
           tickets={this.props.tickets}
@@ -29,7 +46,7 @@ class TicketListContainer extends React.Component {
     );
   }
 }
-//get the state of the user to see if it is an empty string
+
 const mapStateToProps = state => {
   console.log("STATE IN TicketList", state);
   return {

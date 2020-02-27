@@ -49,8 +49,8 @@ class EventContainer extends Component {
           handleChange={this.handleChange}
           values={this.state}
         />
-        <EventListContainer />
       </div>
+      //make a link here to go to event list
     );
   }
 }
@@ -58,7 +58,7 @@ class EventContainer extends Component {
 const mapStateToProps = state => {
   console.log("STATE IN MSTP", state);
   return {
-    userCreated: state.user.userCreated
+    user: state.user
   };
 };
 

@@ -38,6 +38,7 @@ class LoginContainer extends Component {
             values={this.state}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            user={this.props.user}
           />
         )}
       </div>
@@ -46,8 +47,9 @@ class LoginContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log("log in form ", state);
   return {
-    userLoggedIn: state.user.token !== null
+    user: state.user
   };
 };
 

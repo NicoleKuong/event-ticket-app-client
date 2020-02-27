@@ -24,11 +24,11 @@ export function signUp(username, email, password, history) {
   };
 }
 
-function loginSuccess(token, userId) {
+function loginSuccess(token, userId, username) {
   // console.log("is this an id? 2", userId);
   return {
     type: LOGIN_SUCCESS,
-    payload: { token: token, userId: userId }
+    payload: { token: token, userId: userId, username: username }
   };
 }
 
@@ -39,8 +39,14 @@ export function login(email, password, history) {
       email,
       password
     });
-    // console.log("this should contain an id", response);
-    dispatch(loginSuccess(response.data.jwt, response.data.userId));
+    console.log("this should contain an id", response);
+    dispatch(
+      loginSuccess(
+        response.data.jwt,
+        response.data.userId,
+        response.data.username
+      )
+    );
     history.push("/events");
   };
 }

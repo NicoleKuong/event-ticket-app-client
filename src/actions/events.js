@@ -15,11 +15,11 @@ function allEvents(payload) {
 export const getEvents = () => (dispatch, getState) => {
   const state = getState();
   const { events } = state;
-  console.log("state action", getState());
+  // console.log("state action", getState());
   if (!events.length) {
     request(`${databaseUrl}/events`)
       .then(response => {
-        console.log("response test", response);
+        // console.log("response test", response);
         const action = allEvents(response.body);
         dispatch(action);
       })
@@ -41,11 +41,13 @@ export const createEvent = (
   startDate,
   endDate
 ) => (dispatch, getState) => {
+  console.log("getstate in event", getState());
   const token = getState().user.token;
+  const userId = getState().user.userId;
   request
     .post(`${databaseUrl}/events`)
     .set("Authorization", `Bearer ${token}`)
-    .send({ name, description, imageUrl, startDate, endDate })
+    .send({ name, description, imageUrl, startDate, endDate, userId })
     .then(response => {
       const action = newEvent(response.body);
       dispatch(action);

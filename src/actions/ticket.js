@@ -52,7 +52,7 @@ export const createTicket = (
     .set("Authorization", `Bearer ${token}`)
     .send({ imageUrl, price, description, eventId, userId })
     .then(response => {
-      console.log("createticket", response);
+      // console.log("createticket", response);
       const action = newTicket(response.body);
       dispatch(action);
       history.push(`/events/${eventId}`);

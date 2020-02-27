@@ -7,13 +7,12 @@ import TicketContainer from "../Ticket/TicketContainer";
 export default class EventList extends Component {
   render() {
     const { events } = this.props;
+    const { users } = this.props;
     // console.log("props", this.props);
     // console.log("userLoggedIn booloan", this.props.userLoggedIn === true);
 
     return (
       <div>
-        <h1>Event List</h1>
-
         {/* {!this.props.userLoggedIn && <LoginFormContainer />}
         {!this.props.userLoggedIn && <SignUpFormContainer />}
         {this.props.userLoggedIn && <CreateFormContainer />} */}
@@ -22,14 +21,20 @@ export default class EventList extends Component {
         {events && (
           <div>
             {events.map((event, index) => (
-              <Link to={`events/${event.id}`}>
-                <div className="eventList" key={index}>
-                  <h3>{event.name}</h3>
-                  <img src={event.imageUrl} alt={event.name} />
-                </div>
-              </Link>
+              <Card className="event-card" style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={event.imageUrl} />
+                <Card.Body>
+                  <Card.Title>{event.name}</Card.Title>
+                  <Card.Text>Description: {event.description}</Card.Text>
+                  <Card.Text>
+                    Event End Date: {event.endDate.slice(0, 10)}{" "}
+                  </Card.Text>
+                  <Link to={`events/${event.id}`}>
+                    <Button variant="primary">View Details</Button>
+                  </Link>
+                </Card.Body>
+              </Card>
             ))}
-            <Link to={`events/newticket`}>Create Ticket</Link>
           </div>
         )}
       </div>
