@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const EventForm = props => {
   console.log("eventform props", props);
@@ -55,6 +56,7 @@ const EventForm = props => {
           value={props.values.endDate}
         />
       </Form.Group>
+
       <Button variant="primary" type="submit">
         CREATE EVENT
       </Button>

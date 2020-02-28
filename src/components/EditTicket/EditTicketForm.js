@@ -39,11 +39,11 @@ const EditTicketForm = props => {
           value={props.values.description}
         />
       </Form.Group>
-      <Link to={`/ticket/${props.ticketId}`}>
-        <Button variant="primary" type="submit">
-          EDIT TICKET
-        </Button>
-      </Link>
+
+      <Button variant="primary" type="submit">
+        EDIT TICKET
+      </Button>
+      <Link to={`/ticket/${props.ticketId}`}>Return</Link>
     </Form>
   );
 };

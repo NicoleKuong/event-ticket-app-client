@@ -13,16 +13,20 @@ export default function TicketDetails(props) {
     userName
   } = props;
 
-  const ticketEdit =
-    currentUserName === userName ? (
-      <div>
-        <Link to={`/ticket/${ticketId}/edit`}>
-          <Button variant="primary" type="submit">
-            EDIT TICKET
-          </Button>
-        </Link>
-      </div>
-    ) : null;
+  // const ticketEdit = () => {
+  //   if (currentUserName === userName) {
+  //     return (
+  //       <div>
+  //         <Link to={`/ticket/${ticketId}/edit`}>
+  //           <Button variant="primary" type="submit">
+  //             EDIT TICKET
+  //           </Button>
+  //         </Link>
+  //       </div>
+  //     );
+  //   }
+  //   return null;
+  // };
 
   return (
     <div>
@@ -38,7 +42,7 @@ export default function TicketDetails(props) {
           {fraudRiskResult}%
         </h3>
       </div>
-      {ticketEdit}
+      {/* {ticketEdit()} */}
     </div>
   );
 }
