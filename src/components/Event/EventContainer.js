@@ -42,7 +42,7 @@ class EventContainer extends Component {
   render() {
     return (
       <div>
-        <h2>Create a New Event</h2>
+        <h2 className="create-event-title">Create a New Event</h2>
         <EventForm
           text={"eventForm"}
           handleSubmit={this.handleSubmit}

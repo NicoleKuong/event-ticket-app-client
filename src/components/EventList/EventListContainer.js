@@ -23,7 +23,7 @@ class EventListContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  // console.log("STATE IN EventList", state);
+  console.log("STATE IN EventList", state);
   return {
     user: state.user,
     events: state.events
