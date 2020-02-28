@@ -1,7 +1,29 @@
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 export default function TicketDetails(props) {
-  const { fraudRiskResult, curretEventName, currentTicket, user } = props;
+  console.log("edit props", props);
+  const {
+    ticketId,
+    fraudRiskResult,
+    curretEventName,
+    currentTicket,
+    currentUserName,
+    userName
+  } = props;
+
+  const ticketEdit =
+    currentUserName === userName ? (
+      <div>
+        <Link to={`/ticket/${ticketId}/edit`}>
+          <Button variant="primary" type="submit">
+            EDIT TICKET
+          </Button>
+        </Link>
+      </div>
+    ) : null;
+
   return (
     <div>
       <div className="ticket-detail">
@@ -16,6 +38,7 @@ export default function TicketDetails(props) {
           {fraudRiskResult}%
         </h3>
       </div>
+      {ticketEdit}
     </div>
   );
 }

@@ -44,7 +44,6 @@ export const createComment = (content, ticketId) => (dispatch, getState) => {
       console.log("createcomment", response);
       const action = newComment(response.body);
       dispatch(action);
-      // history.push(`/events/${eventId}`);
     })
     .catch(console.error);
 };

@@ -47,7 +47,7 @@ export function login(email, password, history) {
         response.data.username
       )
     );
-    history.push("/events");
+    history.push("/");
   };
 }
 

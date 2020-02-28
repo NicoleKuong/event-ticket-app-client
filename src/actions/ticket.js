@@ -3,6 +3,7 @@ import request from "superagent";
 export const ALL_TICKETS = "ALL_TICKETS";
 export const NEW_TICKET = "NEW_TICKET";
 export const ONE_USER_TICKETS = "ONE_USER_TICKETS";
+export const EDIT_TICKET = "EDIT_TICKET";
 
 const databaseUrl = "http://localhost:4000";
 
@@ -89,4 +90,26 @@ export const getOneUserTickets = ticketId => (dispatch, getState) => {
       })
       .catch(console.error);
   }
+};
+
+//edit ticket
+const editTicket = payload => ({
+  type: EDIT_TICKET,
+  payload
+});
+
+export const getEditTicket = (ticketId, description, imageUrl, price) => (
+  dispatch,
+  getState
+) => {
+  const token = getState().user.token;
+
+  request
+    .put(`${databaseUrl}/ticket/${ticketId}/edit`)
+    .set("Authorization", `Bearer ${token}`)
+    .send(ticketId, description, imageUrl, price)
+    .then(res => {
+      dispatch(editTicket(res.body));
+    })
+    .catch(console.error);
 };

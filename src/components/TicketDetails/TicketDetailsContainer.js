@@ -29,7 +29,7 @@ class TicketDetailsContainer extends Component {
     const currentNoOfComments = this.props.comments.length;
 
     console.log("comments props", currentNoOfComments);
-    // console.log("currentTicket", currentTicket);
+    console.log("currentTicket", currentTicket);
     // console.log("currentEvent", currentEvent);
 
     // console.log("ticket test", this.props.tickets.length);
@@ -87,7 +87,7 @@ class TicketDetailsContainer extends Component {
         risk = risk - 10;
       } else if (pctDifference < 10 && currentTicketPrice > avgTicketPrice) {
         risk = risk - pctDifference;
-      } else if (currentTicketPrice > avgTicketPrice) {
+      } else if (currentTicketPrice < avgTicketPrice) {
         risk = risk + pctDifference;
       }
 
@@ -114,10 +114,12 @@ class TicketDetailsContainer extends Component {
     return (
       <div>
         <TicketDetails
+          ticketId={this.props.match.params.ticketId}
           fraudRiskResult={fraudRiskResult}
           curretEventName={currentEvent.name}
           currentTicket={currentTicket}
-          user={this.props.users}
+          curretUserName={currentTicket.user.username}
+          userName={this.props.users.username}
         />
 
         <CommentsListContainer ticketId={currentTicket.id} />

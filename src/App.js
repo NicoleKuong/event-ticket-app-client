@@ -9,6 +9,7 @@ import TicketsListContainer from "./components/TicketsList/TicketsListContainer"
 import TicketContainer from "./components/Ticket/TicketContainer";
 import TicketDetailsContainer from "./components/TicketDetails/TicketDetailsContainer";
 import EventListContainer from "./components/EventList/EventListContainer";
+import EditTicketContainer from "./components/EditTicket/EditTicketContainer";
 
 function App() {
   return (
@@ -28,6 +29,11 @@ function App() {
           <Nav.Item>
             <Nav.Link as={Link} to="/login">
               Log In
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/events">
+              Create Event
             </Nav.Link>
           </Nav.Item>
         </Nav>
@@ -51,6 +57,11 @@ function App() {
             exact
             path="/ticket/:ticketId"
             component={TicketDetailsContainer}
+          />
+          <Route
+            exact
+            path="/ticket/:ticketId/edit"
+            component={EditTicketContainer}
           />
         </Switch>
       </Router>
