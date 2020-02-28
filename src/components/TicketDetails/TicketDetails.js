@@ -37,12 +37,33 @@ export default function TicketDetails(props) {
         <img src={currentTicket.imageUrl} alt="image" />
         <h3>Price:{currentTicket.price}</h3>
         <p>Description: {currentTicket.description}</p>
-        <h3>
-          We calculated that the risk of this ticket being a fraud is{" "}
-          {fraudRiskResult}%
-        </h3>
+        {fraudRiskResult > 70 ? (
+          <h3 style={{ color: "red" }}>
+            We calculated that the risk of this ticket being a fraud is{" "}
+            {fraudRiskResult}%
+          </h3>
+        ) : null}
+        {fraudRiskResult < 70 && fraudRiskResult >= 35 ? (
+          <h3 style={{ color: "yellow" }}>
+            We calculated that the risk of this ticket being a fraud is{" "}
+            {fraudRiskResult}%
+          </h3>
+        ) : null}
+        {fraudRiskResult < 35 ? (
+          <h3 style={{ color: "green" }}>
+            We calculated that the risk of this ticket being a fraud is{" "}
+            {fraudRiskResult}%
+          </h3>
+        ) : null}
       </div>
       {/* {ticketEdit()} */}
+      <div>
+        <Link to={`/ticket/${ticketId}/edit`}>
+          <Button variant="primary" type="submit">
+            EDIT TICKET
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }
