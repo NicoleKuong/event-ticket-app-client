@@ -1,9 +1,8 @@
 import request from "superagent";
+import databaseUrl from "../constants";
 
 export const ALL_EVENTS = "ALL_EVENTS";
 export const NEW_EVENT = "NEW_EVENT";
-
-const databaseUrl = "http://localhost:4000";
 
 function allEvents(payload) {
   return {

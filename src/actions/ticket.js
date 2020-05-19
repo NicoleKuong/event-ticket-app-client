@@ -1,11 +1,10 @@
 import request from "superagent";
+import databaseUrl from "../constants";
 
 export const ALL_TICKETS = "ALL_TICKETS";
 export const NEW_TICKET = "NEW_TICKET";
 export const ONE_USER_TICKETS = "ONE_USER_TICKETS";
 export const EDIT_TICKET = "EDIT_TICKET";
-
-const databaseUrl = "http://localhost:4000";
 
 //get tickets of one event
 function allTickets(payload) {
