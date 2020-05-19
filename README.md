@@ -14,19 +14,19 @@ Retix is a mock ticket exchange application for users to sell and buy tickets on
 
 ## App demo
 
-##### Home Page
+#### Home Page
 
 ![retix_screenshot_1](https://user-images.githubusercontent.com/48523895/82328522-4bb37e80-99e0-11ea-9b6e-bd9ce75f83f1.png)
 
-##### Event Detail Page
+#### Event Detail Page
 
 ![retix_screenshot_2](https://user-images.githubusercontent.com/48523895/82328613-6a197a00-99e0-11ea-8915-2dc633b1eb7d.png)
 
-##### Different Tickets for an Event
+#### Different Tickets for an Event
 
 ![retix_screenshot_3](https://user-images.githubusercontent.com/48523895/82328726-7e5d7700-99e0-11ea-8a46-5022e1297390.png)
 
-##### Comment for Ticket
+#### Comment and Fraud Risk or Ticket
 
 ![retix_screenshot_4](https://user-images.githubusercontent.com/48523895/82328790-9634fb00-99e0-11ea-8984-61239479d92b.png)
 
