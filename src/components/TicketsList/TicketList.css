@@ -1,11 +1,50 @@
-.ticket-list-title {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab:wght@600&display=swap");
+
+.event-detail-title {
+  font-family: "Fredericka the Great", cursive;
+  margin: 20px 0;
 }
 
 .event-detail {
+  text-align: center;
+  font-family: "Josefin Slab", serif;
+}
+
+.event-detail-description {
+  margin-top: 20px;
+  font-size: 25px;
+  font-family: "Josefin Slab", serif;
+}
+
+.event-detail-date {
+  font-size: 20px;
+  font-family: "Josefin Slab", serif;
+}
+
+.ticket-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.ticket-card {
+  width: 28%;
+  padding-bottom: 20px;
+  margin: 20px 10px;
+}
+
+.ticket-card-body {
+  font-family: "Josefin Slab", serif;
   text-align: center;
 }
 
 .add-new-ticket-btn {
   text-align: center;
+  margin: 40px 0;
+}
+
+.ticket-list-title {
+  text-align: center;
+  font-family: "Fredericka the Great", cursive;
 }

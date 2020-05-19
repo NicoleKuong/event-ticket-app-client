@@ -1,15 +1,32 @@
-.event-card {
-  display: inline-block;
-  margin-left: 50px;
-  margin-right: 40px;
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Josefin+Slab:wght@600&display=swap");
+
+.notice {
+  text-align: center;
   margin-top: 20px;
-  margin-bottom: 20px;
+  font-style: italic;
+  font-family: "Fredericka the Great", cursive;
+}
+
+.event-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.event-card {
+  width: 28%;
+  padding-bottom: 20px;
+  margin: 20px 10px;
 }
 
 .event-title {
   text-align: center;
+  margin-top: 20px;
+  font-family: "Fredericka the Great", cursive;
 }
 
-.notice {
+.event-body {
+  font-family: "Josefin Slab", serif;
   text-align: center;
 }

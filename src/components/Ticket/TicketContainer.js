@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import TicketForm from "./TicketForm";
 import { connect } from "react-redux";
 import { createTicket } from "../../actions/ticket";
+import "./TicketForm.css";
 
 class TicketContainer extends Component {
   state = {
     imageUrl: "",
     price: 0,
-    description: ""
+    description: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     // console.log(this.state);
     this.props.dispatch(
@@ -29,14 +30,13 @@ class TicketContainer extends Component {
     this.setState({
       imageUrl: "",
       price: 0,
-      description: ""
+      description: "",
     });
   };
 
   render() {
     return (
       <div>
-        {/* {this.props.userCreated ? <h1>Account created</h1> : null} */}
         <TicketForm
           text={"ticketForm"}
           handleSubmit={this.handleSubmit}
@@ -48,12 +48,12 @@ class TicketContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   // console.log("STATE IN ticket", state);
   return {
     user: state.user,
     events: state.events,
-    tickets: state.tickets
+    tickets: state.tickets,
   };
 };
 

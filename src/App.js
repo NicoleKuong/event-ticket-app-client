@@ -5,7 +5,7 @@ import {
   Route,
   Switch,
   Link,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import { connect } from "react-redux";
 import Nav from "react-bootstrap/Nav";
@@ -17,6 +17,7 @@ import TicketContainer from "./components/Ticket/TicketContainer";
 import TicketDetailsContainer from "./components/TicketDetails/TicketDetailsContainer";
 import EventListContainer from "./components/EventList/EventListContainer";
 import EditTicketContainer from "./components/EditTicket/EditTicketContainer";
+import NavBar from "./components/NavBar/NavBar";
 
 class App extends Component {
   protectedRoute = (Component, routerProps) => {
@@ -28,29 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Nav variant="pills">
-            <Nav.Item>
-              <Nav.Link as={Link} to="/">
-                Home
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link as={Link} to="/signup">
-                Sign Up
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link as={Link} to="/login">
-                Log In
-              </Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link as={Link} to="/events">
-                Create Event
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-
+          <NavBar />
           <Switch>
             <Route exact path="/" component={EventListContainer} />
             <Route exact path="/signup" component={SignUpContainer} />
@@ -58,7 +37,7 @@ class App extends Component {
             <Route
               exact
               path="/events"
-              render={routerProps =>
+              render={(routerProps) =>
                 this.protectedRoute(EventContainer, routerProps)
               }
             />
@@ -89,9 +68,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
   };
 };
 

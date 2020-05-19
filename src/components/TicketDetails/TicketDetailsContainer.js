@@ -20,30 +20,31 @@ class TicketDetailsContainer extends Component {
 
   render() {
     const currentTicket = this.props.tickets.find(
-      ticket => ticket.id === parseInt(this.props.match.params.ticketId)
+      (ticket) => ticket.id === parseInt(this.props.match.params.ticketId)
     );
     const currentEvent = this.props.events.find(
-      event => event.id == currentTicket.eventId
+      (event) => event.id == currentTicket.eventId
     );
 
     const currentNoOfComments = this.props.comments.length;
 
-    console.log("comments props", currentNoOfComments);
-    console.log("currentTicket", currentTicket);
-    // console.log("currentEvent", currentEvent);
+    // console.log("comments props", currentNoOfComments);
+    // console.log("currentTicket", currentTicket);
+    // console.log("currentEvent", this.props.events);
 
     // console.log("ticket test", this.props.tickets.length);
     const ticketsPerUser =
       this.props.tickets.length &&
-      this.props.tickets.filter(ticket => ticket.userId == currentTicket.userId)
-        .length;
+      this.props.tickets.filter(
+        (ticket) => ticket.userId == currentTicket.userId
+      ).length;
 
     // console.log("ticketsPerUser", ticketsPerUser);
 
     const ticketPerEvent =
       this.props.tickets.length &&
       this.props.tickets.filter(
-        ticket => ticket.eventId == currentTicket.eventId
+        (ticket) => ticket.eventId == currentTicket.eventId
       ).length;
 
     // console.log("ticketPerEvent", ticketPerEvent);
@@ -51,8 +52,8 @@ class TicketDetailsContainer extends Component {
     const sumOfTicketPrice =
       this.props.tickets.length &&
       this.props.tickets
-        .filter(ticket => ticket.eventId == currentTicket.eventId)
-        .map(ticket => parseInt(ticket.price))
+        .filter((ticket) => ticket.eventId == currentTicket.eventId)
+        .map((ticket) => parseInt(ticket.price))
         .reduce((a, c) => a + c, 0);
 
     // console.log("sumOfTicketPrice", sumOfTicketPrice);
@@ -63,12 +64,12 @@ class TicketDetailsContainer extends Component {
     const currentTicketPrice = parseInt(currentTicket.price);
     const testing =
       ((currentTicketPrice - avgTicketPrice) / avgTicketPrice) * 100;
-    console.log("testing price", testing);
+    // console.log("testing price", testing);
 
     const createTicketTime =
       currentTicket && currentTicket.createdAt.slice(11, 13);
 
-    // console.log("createTicketTime", createTicketTime);
+    console.log("createTicketTime", createTicketTime);
 
     const commentsPerTicket = currentTicket.comments && currentNoOfComments;
     // console.log("commentsPerTicket", commentsPerTicket);
@@ -113,13 +114,14 @@ class TicketDetailsContainer extends Component {
 
     return (
       <div>
+        {/* {console.log("currentTicket", currentTicket)} */}
         <TicketDetails
           ticketId={this.props.match.params.ticketId}
           fraudRiskResult={fraudRiskResult}
           curretEventName={currentEvent.name}
           currentTicket={currentTicket}
-          curretUserName={currentTicket.user.username}
-          userName={this.props.users.username}
+          currentUserName={this.props.user.username}
+          userId={this.props.user.userId}
         />
 
         <CommentsListContainer ticketId={currentTicket.id} />
@@ -130,13 +132,13 @@ class TicketDetailsContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log("STATE IN Ticket Details", state);
+const mapStateToProps = (state) => {
+  // console.log("STATE IN Ticket Details", state);
   return {
-    users: state.user,
+    user: state.user,
     events: state.events,
     tickets: state.tickets,
-    comments: state.comments
+    comments: state.comments,
   };
 };
 

@@ -2,34 +2,43 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EditTicketForm from "./EditTicketForm";
 import { getEditTicket } from "../../actions/ticket";
+import "./EditTicket.css";
 
 class EditTicketContainer extends Component {
   state = {
     imageUrl: "",
     price: 0,
-    description: ""
+    description: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
+    const newTicket = this.props.tickets.find(
+      (ticket) => ticket.id == this.props.match.params.ticketId
+    );
+
+    // console.log("newTicket", newTicket);
+
     event.preventDefault();
 
     this.props.dispatch(
-      getEditTicket(
-        this.state.imageUrl,
-        this.state.price,
-        this.state.description,
-        this.props.match.params.ticketId
-        // this.props.users.token
-      )
+      getEditTicket({
+        imageUrl: this.state.imageUrl,
+        price: this.state.price,
+        description: this.state.description,
+        ticketId: this.props.match.params.ticketId,
+        history: this.props.history,
+        createdAt: newTicket.createdAt,
+        eventId: newTicket.eventId,
+      })
     );
     this.setState({
       imageUrl: "",
       price: 0,
-      description: ""
+      description: "",
     });
   };
 
@@ -45,13 +54,13 @@ class EditTicketContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log("STATE IN edit ticket", state);
+const mapStateToProps = (state) => {
+  // console.log("STATE IN edit ticket", state);
   return {
     users: state.user,
     events: state.events,
     tickets: state.tickets,
-    comments: state.comments
+    comments: state.comments,
   };
 };
 

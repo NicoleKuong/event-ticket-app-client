@@ -11,14 +11,14 @@ class EventContainer extends Component {
     description: "",
     imageUrl: "",
     startDate: "",
-    endDate: ""
+    endDate: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     // console.log(this.state);
     this.props.dispatch(
@@ -35,14 +35,13 @@ class EventContainer extends Component {
       description: "",
       imageUrl: "",
       startDate: "",
-      endDate: ""
+      endDate: "",
     });
   };
 
   render() {
     return (
       <div>
-        <h2 className="create-event-title">Create a New Event</h2>
         <EventForm
           text={"eventForm"}
           handleSubmit={this.handleSubmit}
@@ -55,10 +54,10 @@ class EventContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   // console.log("STATE IN MSTP", state);
   return {
-    user: state.user
+    user: state.user,
   };
 };
 

@@ -11,14 +11,14 @@ const databaseUrl = "http://localhost:4000";
 function allTickets(payload) {
   return {
     type: ALL_TICKETS,
-    payload
+    payload,
   };
 }
 
-export const getTickets = eventId => dispatch => {
+export const getTickets = (eventId) => (dispatch) => {
   // console.log("state action in ticket", getState());
   request(`${databaseUrl}/events/${eventId}/tickets`)
-    .then(response => {
+    .then((response) => {
       console.log("response test", response);
       const action = allTickets(response.body);
       dispatch(action);
@@ -27,9 +27,9 @@ export const getTickets = eventId => dispatch => {
 };
 
 //get all tickets
-export const getAllTickets = () => dispatch => {
+export const getAllTickets = () => (dispatch) => {
   request(`${databaseUrl}/tickets`)
-    .then(response => {
+    .then((response) => {
       // console.log("response body test", response.body);
       const action = allTickets(response.body);
       dispatch(action);
@@ -41,7 +41,7 @@ export const getAllTickets = () => dispatch => {
 function newTicket(payload) {
   return {
     type: NEW_TICKET,
-    payload
+    payload,
   };
 }
 
@@ -60,8 +60,8 @@ export const createTicket = (
     .post(`${databaseUrl}/tickets`)
     .set("Authorization", `Bearer ${token}`)
     .send({ imageUrl, price, description, eventId, userId })
-    .then(response => {
-      // console.log("createticket", response);
+    .then((response) => {
+      console.log("createticket", response);
       const action = newTicket(response.body);
       dispatch(action);
       history.push(`/events/${eventId}`);
@@ -73,17 +73,17 @@ export const createTicket = (
 function oneUserTickets(payload) {
   return {
     type: ONE_USER_TICKETS,
-    payload
+    payload,
   };
 }
 
-export const getOneUserTickets = ticketId => (dispatch, getState) => {
+export const getOneUserTickets = (ticketId) => (dispatch, getState) => {
   const state = getState();
   const { tickets } = state;
   // console.log("state action in ticket", getState());
   if (!tickets.length) {
     request(`${databaseUrl}/user/tickets/${ticketId}`)
-      .then(response => {
+      .then((response) => {
         // console.log("response test", response);
         const action = oneUserTickets(response.body);
         dispatch(action);
@@ -93,23 +93,36 @@ export const getOneUserTickets = ticketId => (dispatch, getState) => {
 };
 
 //edit ticket
-const editTicket = payload => ({
+const editTicket = (payload) => ({
   type: EDIT_TICKET,
-  payload
+  payload,
 });
 
-export const getEditTicket = (ticketId, description, imageUrl, price) => (
-  dispatch,
-  getState
-) => {
+export const getEditTicket = ({
+  ticketId,
+  description,
+  imageUrl,
+  price,
+  createdAt,
+  eventId,
+  history,
+}) => (dispatch, getState) => {
   const token = getState().user.token;
-
+  const body = {
+    ticketId: ticketId,
+    description: description,
+    imageUrl: imageUrl,
+    price: price,
+    createdAt: createdAt,
+    eventId: eventId,
+  };
   request
     .put(`${databaseUrl}/ticket/${ticketId}/edit`)
     .set("Authorization", `Bearer ${token}`)
-    .send(ticketId, description, imageUrl, price)
-    .then(res => {
+    .send(body)
+    .then((res) => {
       dispatch(editTicket(res.body));
+      history.push(`/ticket/${ticketId}`);
     })
     .catch(console.error);
 };

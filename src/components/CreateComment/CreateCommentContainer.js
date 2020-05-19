@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import CreateCommentForm from "./CreateCommentForm";
 import { connect } from "react-redux";
 import { createComment } from "../../actions/comments";
+import "./CreateComment.css";
 
 class CreateCommentContainer extends Component {
   state = {
-    content: ""
+    content: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     // console.log(this.state);
     this.props.dispatch(
@@ -24,7 +25,7 @@ class CreateCommentContainer extends Component {
       )
     );
     this.setState({
-      content: ""
+      content: "",
     });
   };
 
@@ -43,13 +44,13 @@ class CreateCommentContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   // console.log("STATE IN comment", state);
   return {
     userId: state.user.userId,
     events: state.events,
     tickets: state.tickets,
-    comments: state.comments
+    comments: state.comments,
   };
 };
 

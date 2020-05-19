@@ -2,8 +2,9 @@ import {
   ALL_TICKETS,
   NEW_TICKET,
   ONE_USER_TICKETS,
-  EDIT_TICKET
+  EDIT_TICKET,
 } from "../actions/ticket";
+import { createDispatchHook } from "react-redux";
 
 const initialState = [];
 
@@ -20,13 +21,15 @@ export default (state = initialState, action = {}) => {
       return action.payload;
     }
     case EDIT_TICKET: {
-      const updatedTicket = [...state].map(ticket =>
+      const updatedTicket = [...state].map((ticket) =>
         ticket.id === action.payload.id
           ? {
               id: action.payload.id,
               imageUrl: action.payload.imageUrl,
               price: action.payload.price,
-              description: action.payload.description
+              description: action.payload.description,
+              createdAt: action.payload.createdAt,
+              eventId: action.payload.eventId,
             }
           : action.payload
       );

@@ -9,61 +9,57 @@ export default function TicketDetails(props) {
     fraudRiskResult,
     curretEventName,
     currentTicket,
-    currentUserName,
-    userName
+    userId,
   } = props;
 
-  // const ticketEdit = () => {
-  //   if (currentUserName === userName) {
-  //     return (
-  //       <div>
-  //         <Link to={`/ticket/${ticketId}/edit`}>
-  //           <Button variant="primary" type="submit">
-  //             EDIT TICKET
-  //           </Button>
-  //         </Link>
-  //       </div>
-  //     );
-  //   }
-  //   return null;
-  // };
+  const ticketEdit = () => {
+    if (userId === currentTicket.userId) {
+      return (
+        <div className="edit-ticket-btn">
+          <Link to={`/ticket/${ticketId}/edit`}>
+            <Button variant="primary" type="submit">
+              EDIT TICKET
+            </Button>
+          </Link>
+        </div>
+      );
+    }
+    return null;
+  };
 
   return (
     <div>
       <div className="ticket-detail">
-        <h2>Ticket Details:</h2>
         {/* <p>Created By: {currentTicket.user.username}</p> */}
-        <h3>Event: {curretEventName}</h3>
+        <h3 className="ticket-detail-title">Ticket for {curretEventName}</h3>
         <img src={currentTicket.imageUrl} alt="image" />
-        <h3>Price:{currentTicket.price}</h3>
-        <p>Description: {currentTicket.description}</p>
-        {fraudRiskResult > 70 ? (
-          <h3 style={{ color: "red" }}>
-            We calculated that the risk of this ticket being a fraud is{" "}
-            {fraudRiskResult}%
-          </h3>
-        ) : null}
-        {fraudRiskResult < 70 && fraudRiskResult >= 35 ? (
-          <h3 style={{ color: "yellow" }}>
-            We calculated that the risk of this ticket being a fraud is{" "}
-            {fraudRiskResult}%
-          </h3>
-        ) : null}
-        {fraudRiskResult < 35 ? (
-          <h3 style={{ color: "green" }}>
-            We calculated that the risk of this ticket being a fraud is{" "}
-            {fraudRiskResult}%
-          </h3>
-        ) : null}
+        <div className="ticket-detail-text">
+          <p>Price: {currentTicket.price}</p>
+          <p>{currentTicket.description}</p>
+        </div>
+
+        <div className="fraud-cal-text">
+          {fraudRiskResult > 70 ? (
+            <h3 style={{ color: "red" }}>
+              We calculated that the risk of this ticket being a fraud is{" "}
+              {fraudRiskResult}%
+            </h3>
+          ) : null}
+          {fraudRiskResult < 70 && fraudRiskResult >= 35 ? (
+            <h3 style={{ color: "yellow" }}>
+              We calculated that the risk of this ticket being a fraud is{" "}
+              {fraudRiskResult}%
+            </h3>
+          ) : null}
+          {fraudRiskResult < 35 ? (
+            <h3 style={{ color: "green" }}>
+              We calculated that the risk of this ticket being a fraud is{" "}
+              {fraudRiskResult}%
+            </h3>
+          ) : null}
+        </div>
       </div>
-      {/* {ticketEdit()} */}
-      <div>
-        <Link to={`/ticket/${ticketId}/edit`}>
-          <Button variant="primary" type="submit">
-            EDIT TICKET
-          </Button>
-        </Link>
-      </div>
+      {ticketEdit()}
     </div>
   );
 }

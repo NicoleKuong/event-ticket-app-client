@@ -10,15 +10,14 @@ export default class CommentsList extends Component {
     return (
       //add comment author
       <div>
-        <h3>Comments</h3>
         <ul className="comment-list">
           {!comments
             ? "Loading..."
-            : comments.map(comment => {
+            : comments.map((comment) => {
                 return (
                   <li key={comment.id}>
                     <p>
-                      {user.username} says: {comment.content}
+                      <em>{user.username}</em> says: {comment.content}
                     </p>
                   </li>
                 );

@@ -4,10 +4,10 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 // import "./SignUpForm.css";
 
-const EditTicketForm = props => {
+const EditTicketForm = (props) => {
   // console.log("ticket props", props);
   return (
-    <Form className="ticketform" onSubmit={props.handleSubmit}>
+    <Form className="edit-ticket-form" onSubmit={props.handleSubmit}>
       <Form.Group controlId="formImage">
         <Form.Label>Ticket Image:</Form.Label>
         <Form.Control
@@ -43,7 +43,6 @@ const EditTicketForm = props => {
       <Button variant="primary" type="submit">
         EDIT TICKET
       </Button>
-      <Link to={`/ticket/${props.ticketId}`}>Return</Link>
     </Form>
   );
 };

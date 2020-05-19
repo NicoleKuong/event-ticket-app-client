@@ -2,11 +2,11 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const CreateCommentForm = props => {
+const CreateCommentForm = (props) => {
   // console.log("ticket props", props);
   return (
-    <Form className="ticketform" onSubmit={props.handleSubmit}>
-      <Form.Group controlId="formUserName">
+    <Form className="comment-form" onSubmit={props.handleSubmit}>
+      <Form.Group controlId="formComment">
         <Form.Label>Leave a Comment:</Form.Label>
         <Form.Control
           onChange={props.handleChange}

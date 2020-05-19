@@ -6,14 +6,14 @@ import { connect } from "react-redux";
 class LoginContainer extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.dispatch(
       login(this.state.email, this.state.password, this.props.history)
@@ -21,35 +21,33 @@ class LoginContainer extends Component {
 
     this.setState({
       email: "",
-      password: ""
+      password: "",
     });
   };
 
   render() {
     return (
       <div>
-        {this.props.userLoggedIn ? (
-          <div>
-            <h1>You are logged in</h1>
-          </div>
-        ) : (
-          <LoginForm
-            text="Login"
-            values={this.state}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            user={this.props.user}
-          />
-        )}
+        {/* {!this.props.user.token &&
+          alert(
+            "please LOGIN to create an event or SIGNUP to create an account"
+          )} */}
+        <LoginForm
+          text="Login"
+          values={this.state}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          user={this.props.user}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  // console.log("log in form ", state);
+const mapStateToProps = (state) => {
+  console.log("log in form ", state);
   return {
-    user: state.user
+    user: state.user,
   };
 };
 
